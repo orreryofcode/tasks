@@ -93,3 +93,6 @@ const options = {
 
 // Call paint method on heatmap calendar to create the heatmap
 cal.paint(options);
+
+const date = document.querySelector("#date");
+date.textContent = new Date().toLocaleDateString("en");
