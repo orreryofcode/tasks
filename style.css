@@ -39,25 +39,36 @@ h1 {
 
 #cal-heatmap {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
   margin-top: 2rem;
+  height: 10rem;
 }
 
 #color-picker {
   height: 100%;
   list-style: none;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   /* align-items: center; */
 }
 
 #color-picker li {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-right: 2rem;
 }
 
 #color-picker li:hover {
+  cursor: pointer;
+}
+
+#clear-btn {
+  border: none;
+  padding: 3px 6px;
+}
+
+#clear-btn:hover {
   cursor: pointer;
 }
 
