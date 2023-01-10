@@ -1,9 +1,3 @@
-/*TO-DO: 
-  1. Fix color filling of boxes based on selected color
-  2. Map last selected color to box saved in localStorage (key-value pair relationship)
-  3. Add a 'clear' button that resets the entire heatmap to white to easily wipe old data
-*/
-
 // Create instance of CalHeatmap
 const cal = new CalHeatmap();
 
@@ -27,22 +21,20 @@ cal.on("click", (e) => {
   let box = e.target;
   let selected = box.__data__.t;
 
-  /* Conditional below should actually be based on the selected color and the color of the square
-    ex: if you select the color red and the box is already red -> box should change to white
-    however, if you select any other color and the box is a color that isn't the one you selected -> box should change to selected color
-  */
+  let test = {
+    box: "",
+    color: "",
+  };
 
-  if (
-    box.style.fill === "red" ||
-    box.style.fill === "green" ||
-    box.style.fill === "blue"
-  ) {
+  if (box.style.fill === color) {
     box.style.fill = "#ededed";
     let index = boxes.indexOf(selected);
     boxes.splice(index, 1);
   } else {
     box.style.fill = color;
-    boxes.push(selected);
+    test.box = selected;
+    test.color = box.style.fill;
+    boxes.push(test);
   }
 
   // Need to store 'boxes' as a key-value pair relationship where the t value of the box is the key and the last selected color is the value
@@ -52,14 +44,16 @@ cal.on("click", (e) => {
 // Heat map event listener that retrieves the styling saved in localStorage and applies it to the boxes that were last selected
 cal.on("fill", () => {
   // Boxes are red on page refresh/load because the the fill color is hard coded as red: see comment on for localStorage setItem in cal click event listener
-  let data = localStorage.getItem("save");
+  let data = JSON.parse(localStorage.getItem("save"));
 
   const cells = document.querySelectorAll(".graph-rect");
 
   cells.forEach((cell) => {
-    if (data && data.includes(cell.__data__["t"])) {
-      cell.style.fill = "red";
-    }
+    data.forEach((entry) => {
+      if (entry && cell.__data__["t"] === entry.box) {
+        cell.style.fill = entry.color;
+      }
+    });
   });
 });
 
@@ -93,6 +87,14 @@ const options = {
 
 // Call paint method on heatmap calendar to create the heatmap
 cal.paint(options);
+
+// Clear painted calendar
+
+function clearMap() {
+  const cells = document.querySelectorAll(".graph-rect");
+  cells.forEach((cell) => (cell.style.fill = "#ededed"));
+  localStorage.clear();
+}
 
 const date = document.querySelector("#date");
 date.textContent = new Date().toLocaleDateString("en");
