@@ -64,12 +64,23 @@ h1 {
 }
 
 #clear-btn {
-  border: none;
-  padding: 3px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.2rem 1rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  transition: all 0.4s;
 }
 
 #clear-btn:hover {
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translateY(-0.2rem);
+}
+
+#clear-btn:active {
+  transform: translateY(0.2rem);
 }
 
 #items {
