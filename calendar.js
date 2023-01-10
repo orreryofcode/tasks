@@ -21,6 +21,9 @@ const options = {
   },
   subDomain: {
     type: "hour",
+    gutter: 5,
+    width: 20,
+    height: 20,
   },
   //   verticalOrientation: boolean,
   date: {

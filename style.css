@@ -43,20 +43,30 @@ h1 {
   align-items: center;
   flex-direction: column;
   margin-top: 2rem;
-  height: 10rem;
+  min-height: 10rem;
+}
+
+aside {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+aside span {
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 #color-picker {
   height: 100%;
   list-style: none;
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  justify-content: space-between;
+  align-items: center;
 }
 
-#color-picker li {
+#color-picker li:not(:last-child) {
   font-size: 1.2rem;
-  margin-right: 2rem;
+  padding: 0 1rem;
 }
 
 #color-picker li:hover {
@@ -81,6 +91,23 @@ h1 {
 
 #clear-btn:active {
   transform: translateY(0.2rem);
+}
+
+.cal-heatmap-container {
+  margin-top: 2rem;
+}
+
+.cal-heatmap-container .graph-rect {
+  transition: all 0.2s;
+}
+
+.graph-rect:hover {
+  fill: rgb(118, 118, 118);
+  transform: translateY(-0.1rem);
+}
+
+.cal-heatmap-container .graph-label {
+  font-size: 1rem;
 }
 
 #items {
