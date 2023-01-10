@@ -108,8 +108,6 @@ const clear = document.querySelector("#clear-btn");
 clear.addEventListener("click", clearMap);
 
 function clearMap() {
-  console.log("click");
-
   const cells = document.querySelectorAll(".graph-rect");
   cells.forEach((cell) => (cell.style.fill = "#ededed"));
   localStorage.clear();
