@@ -38,13 +38,32 @@ const options = {
 };
 
 // Initialize a selected color for the heatmap
-let color = "red";
+let color = "#991b1b";
 // Grab all of the color options and add an event listener that modifies the selected color based on the option the user clicked on
 const colorPicker = document.querySelectorAll(".color");
 // Function to change color based on user selection
 colorPicker.forEach((choice) => {
   choice.addEventListener("click", (e) => {
-    color = e.target.textContent;
+    switch (e.target.textContent) {
+      case "red":
+        color = "#991b1b";
+        break;
+      case "green":
+        color = "#065f46";
+        break;
+      case "blue":
+        color = "#075985";
+        break;
+      case "indigo":
+        color = "#3730a3";
+        break;
+      case "orange":
+        color = "#f97316";
+        break;
+      case "pink":
+        color = "#ec4899";
+        break;
+    }
   });
 });
 
