@@ -1,7 +1,6 @@
 /*
   1. Clean up calendar.js and split functions/components into separate files
-  2. Pick new/more colors for the heatmap and re-do the logic (maybe change selectors from text to buttons)
-  3. Create custom notification to showing what color was picked (sort of like a toast notification)
+  2. Create custom notification to showing what color was picked (sort of like a toast notification)
 */
 
 // Create instance of CalHeatmap
